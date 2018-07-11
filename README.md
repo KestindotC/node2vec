@@ -8,18 +8,26 @@ This repository provides a reference implementation of *node2vec* as described i
 
 The *node2vec* algorithm learns continuous representations for nodes in any (un)directed, (un)weighted graph. Please check the [project page](https://snap.stanford.edu/node2vec/) for more details. 
 
+
 ### Basic Usage
 
 #### Example
 To run *node2vec* on Zachary's karate club network, execute the following command from the project home directory:<br/>
-	``python src/main.py --input graph/karate.edgelist --output emb/karate.emd``
+```shell
+python src/main.py --input graph/karate.edgelist --output emb/karate.emd
+```
+
+To run *node2vec* on Graph, execute the following command (Directed weighted graph support only):<br/>
+```shell
+python src/main.py --input example.pkl --output emb/example.emd --p 0.25 --q 1 --workers=4 --weighted --directed
+```
 
 #### Options
 You can check out the other options available to use with *node2vec* using:<br/>
 	``python src/main.py --help``
 
 #### Input
-The supported input format is an edgelist:
+The supported input format are edgelists or Graph pickle file:
 
 	node1_id_int node2_id_int <weight_float, optional>
 		
